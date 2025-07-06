@@ -1,19 +1,22 @@
 services:
-  fluentd:
-    build:
-      context: .
-    container_name: fluentd
-    volumes:
-      - ./fluent.conf:/fluentd/etc/fluent.conf
-      - /var/log/nginx:/var/log/nginx:ro
-    ports:
-      - "24224:24224"
-    restart: always
-
   loki:
     image: grafana/loki:2.9.0
     container_name: loki
     ports:
       - "3100:3100"
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
     restart: always
 
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    ports:
+      - "9080:9080"
+    volumes:
+      - /var/log/nginx:/var/log/nginx:ro
+      - /var/log/auth.log:/var/log/auth.log:ro
+      - ./promtail/promtail.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+    restart: always
