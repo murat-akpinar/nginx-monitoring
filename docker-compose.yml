@@ -1,0 +1,19 @@
+services:
+  fluentd:
+    build:
+      context: .
+    container_name: fluentd
+    volumes:
+      - ./fluent.conf:/fluentd/etc/fluent.conf
+      - /var/log/nginx:/var/log/nginx:ro
+    ports:
+      - "24224:24224"
+    restart: always
+
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: loki
+    ports:
+      - "3100:3100"
+    restart: always
+
