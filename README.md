@@ -1,5 +1,13 @@
 # Nginx Monitoring
 
+### Source
+
+- [VoidQuark Grafana Dashboards](https://github.com/voidquark/grafana-dashboards)
+- [Grafana Dashboard: PrivateBin Access Log](https://grafana.com/grafana/dashboards/19507-privatebin-access-log/)
+- Dashboard ID: 19507
+
+NGINX erişim loglarını JSON formatında Fluentd üzerinden Loki'ye gönderip, Grafana ile görselleştirmeyi sağlayan izleme altyapısı.
+
 
 - fluent.conf
 ```bash
