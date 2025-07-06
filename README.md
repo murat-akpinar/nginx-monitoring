@@ -79,5 +79,4 @@ and remote_addr != ""
 and request_uri!~"^/api/.*" 
 and request_uri!~"(?i)(\\.env|\\.env\\.local|\\.env\\.production|/old\\.env|/scripts$|/scripts/.*|/error/\\.env|/wp-content/uploads/.*|/public/img/icons/.*|/public/app/plugins/.*|/config/.*|/getcfg\\.php|\\?phpinfo.*|/app_dev\\.php.*|/public/fonts/.*|/public/build/.*|/wp-includes/.*|/wp-admin/images/.*|/wp-admin/js/.*|/wp-admin/css/.*)" 
 | line_format "🌍 {{.remote_addr}} 🗂 {{.request_method}} 📄 {{.request_uri}} 💻 {{.user_agent}}"
-
 ```
