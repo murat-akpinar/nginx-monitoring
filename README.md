@@ -1,5 +1,8 @@
 # Nginx Monitoring
 
+![Preview](img/Screenshot.png)
+
+
 ### Source
 
 - [VoidQuark Grafana Dashboards](https://github.com/voidquark/grafana-dashboards)
