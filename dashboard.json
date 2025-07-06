@@ -739,7 +739,7 @@
       },
       "gridPos": {
         "h": 12,
-        "w": 22,
+        "w": 19,
         "x": 0,
         "y": 9
       },
@@ -762,7 +762,7 @@
             "uid": "der3tjeay51c0f"
           },
           "editorMode": "code",
-          "expr": "{job=\"nginx\"} | json | remote_addr!~\"^172\\\\.20\\\\..*\" and remote_addr != \"\" and request_uri!~\"^/api/.*\" | line_format \"🌍 {{.remote_addr}} 🗂 {{.request_method}} 📄 {{.request_uri}} 💻 {{.user_agent}}\"\n",
+          "expr": "{job=\"nginx\"} | json \n| remote_addr!~\"^172\\\\.20\\\\..*\" \nand remote_addr != \"\" \nand request_uri!~\"^/api/.*\" \nand request_uri!~\"(?i)(\\\\.env|\\\\.env\\\\.local|\\\\.env\\\\.production|/old\\\\.env|/scripts$|/scripts/.*|/error/\\\\.env|/wp-content/uploads/.*|/public/img/icons/.*|/public/app/plugins/.*|/config/.*|/getcfg\\\\.php|\\\\?phpinfo.*|/app_dev\\\\.php.*|/public/fonts/.*|/public/build/.*|/wp-includes/.*|/wp-admin/images/.*|/wp-admin/js/.*|/wp-admin/css/.*)\" \n| line_format \"🌍 {{.remote_addr}} 🗂 {{.request_method}} 📄 {{.request_uri}} 💻 {{.user_agent}}\"\n",
           "queryType": "range",
           "refId": "A"
         }
@@ -954,7 +954,7 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 11,
+        "w": 8,
         "x": 11,
         "y": 22
       },
@@ -1266,7 +1266,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-purple"
+                "color": "dark-purple",
+                "value": null
               }
             ]
           }
@@ -1384,7 +1385,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-purple"
+                "color": "dark-purple",
+                "value": null
               }
             ]
           }
@@ -1534,7 +1536,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-purple"
+                "color": "dark-purple",
+                "value": null
               }
             ]
           }
@@ -1667,7 +1670,7 @@
     }
   ],
   "preload": false,
-  "refresh": "",
+  "refresh": "5m",
   "schemaVersion": 40,
   "tags": [
     "loki",
@@ -1788,13 +1791,13 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "PrivateBin Access Log",
   "uid": "f28fcf36-bfa6-4c44-85aa-fa0dc9d9ce1a",
-  "version": 10,
+  "version": 14,
   "weekStart": ""
 }
