@@ -72,7 +72,7 @@ error_log /var/log/nginx/error.log;
 ```
 
 - Loki Quary
-```json
+```bash
 {job="nginx"} | json 
 | remote_addr!~"^172\\.20\\..*" 
 and remote_addr != "" 
