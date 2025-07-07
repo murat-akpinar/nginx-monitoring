@@ -17,10 +17,12 @@ scrape_configs:
         labels:
           job: nginx
           __path__: /var/log/nginx/access.log
-    relabel_configs:
-      - source_labels: [__path__]
-        regex: .*/wp-content/.*|.*/wp-admin/.*|.*/api/.*|.*/scripts/.*|.*/public/.*|.*/config/.*|.*/wp-json.*|.*/wp-includes/.*|.*/cgi-bin/.*|.*\?ao_speedup_cachebuster.*
-        action: drop
+
+    pipeline_stages:
+      - regex:
+          expression: '.*(/wp-content/|/wp-admin/|/api/|/scripts/|/public/|/config/|/wp-json|/wp-includes/|/cgi-bin/|\?ao_speedup_cachebuster).*'
+      - labels:
+          noisy_path: "true"
 
   # auth.log
   - job_name: authlog
@@ -30,4 +32,3 @@ scrape_configs:
         labels:
           job: authlog
           __path__: /var/log/auth.log
-
