@@ -127,5 +127,4 @@ and remote_addr != ""
 and request_uri!~"^/api/.*" 
 and request_uri!~"(?i)(\\.env|\\.env\\.local|\\.env\\.production|/old\\.env|/scripts$|/scripts/.*|/error/\\.env|/wp-content/uploads/.*|/public/img/icons/.*|/public/app/plugins/.*|/config/.*|/getcfg\\.php|\\?phpinfo.*|/app_dev\\.php.*|/public/fonts/.*|/public/build/.*|/wp-includes/.*|/wp-admin/.*|/wp-content/plugins/.*|/wp-json.*|/\\?customize.*|/wp-content/themes/.*|/cgi-bin/.*|/\\?ao_speedup_cachebuster.*|/favicon.ico|/d/.*|/avatar/.*|/public/.*|/connections/.*|/wp-content/.*)" 
 | line_format "🌍 {{.remote_addr}} 🗂 {{.request_method}} 📄 {{.request_uri}} 💻 {{.user_agent}}"
-
 ```
