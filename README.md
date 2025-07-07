@@ -12,7 +12,6 @@ NGINX erişim loglarını JSON formatında Promtail üzerinden Loki'ye gönderip
 
 - promtail-config.yaml
 ```bash
-
 server:
   http_listen_port: 9080
   grpc_listen_port: 0
@@ -24,31 +23,21 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-  # Nginx access.log
+  # nginx access log
   - job_name: nginx
     static_configs:
-      - targets:
-          - localhost
+      - targets: ['localhost']
         labels:
           job: nginx
           __path__: /var/log/nginx/access.log
 
-    pipeline_stages:
-      - regex:
-          expression: '.*(/wp-content/|/wp-admin/|/api/|/scripts/|/public/|/config/|/wp-json|/wp-includes/|/cgi-bin/|\?ao_speedup_cachebuster).*'
-      - labels:
-          noisy_path: "true"
-
-  # auth.log
+  # ssh (auth) log
   - job_name: authlog
     static_configs:
-      - targets:
-          - localhost
+      - targets: ['localhost']
         labels:
           job: authlog
           __path__: /var/log/auth.log
-
-
 ```
 
 - loki-config.yaml
